@@ -12,7 +12,7 @@ async function seedDB() {
     await collection.drop();
 
     let bathArray = [];
-    for (let i = 1; i <= 1_000_000; i++) {
+    for (let i = 1; i <= 10_000_000; i++) {
       bathArray.push({ name: randomUUID() });
 
       if (i % 100_000 === 0) {
