@@ -11,13 +11,13 @@ async function seedDB() {
     const collection = client.db("nest").collection("examples");
     await collection.drop();
 
-    const bathArray = [];
+    let bathArray = [];
     for (let i = 1; i <= 1_000_000; i++) {
       bathArray.push({ name: randomUUID() });
 
       if (i % 100_000 === 0) {
         await collection.insertMany(bathArray);
-        bathArray.length = 0;
+        bathArray = [];
       }
     }
 
@@ -25,7 +25,6 @@ async function seedDB() {
   } catch (err) {
     console.log(err.stack);
   }
-
 }
 
 seedDB();

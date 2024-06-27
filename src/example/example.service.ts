@@ -7,10 +7,9 @@ import { Model } from 'mongoose';
 export class ExampleService {
   constructor(@InjectModel(Example.name) private readonly exampleModel: Model<Example>) {}
 
-  async example(search: string) {
-    const a = await this.exampleModel.find().exec();
-    console.log(a);
-
-    return search;
+  example(search: string) {
+    return this.exampleModel.findOne({
+      name: search,
+    }).exec();
   }
 }
