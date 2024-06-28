@@ -19,7 +19,7 @@ export default function () {
   url.searchParams.append('search', name);
 
   const res = http.get(url.toString());
-  check(res, { 'status was 200': (r) => r.status == 200 });
+  check(res, { 'status was 200': (r) => r.status === 200 });
   check(res, { 'correct body': (r) => JSON.parse(r.body).name === name });
   sleep(1);
 }
