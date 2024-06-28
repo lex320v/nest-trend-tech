@@ -1,14 +1,9 @@
-// @ts-ignore
 import { URL } from 'https://jslib.k6.io/url/1.0.0/index.js';
-// @ts-ignore
 import http from 'k6/http';
-// @ts-ignore
 import { check, sleep } from 'k6';
-// @ts-ignore
 import { SharedArray } from 'k6/data';
 
 const uuids = new SharedArray('uuid values', function () {
-  // @ts-ignore
   return JSON.parse(open('../seeds/uuids.json'));
 });
 
