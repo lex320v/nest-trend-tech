@@ -18,14 +18,19 @@ async function seedDB() {
       bathArray.push({ name: randomUUID() });
 
       if (i % 100_000 === 0) {
-        await collection.insertMany(bathArray);
+        const p = [
+          collection.insertMany(bathArray.slice(0, bathArray.length / 2)),
+          collection.insertMany(bathArray.slice(bathArray.length / 2, bathArray.length)),
+        ];
+        await Promise.all(p);
+
         uuids.push(bathArray[0].name);
         bathArray = [];
       }
     }
 
     await fs.promises.writeFile('uuids.json', JSON.stringify(uuids));
-    await client.close()
+    await client.close();
   } catch (err) {
     console.log(err.stack);
   }

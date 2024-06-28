@@ -7,8 +7,7 @@ import { check, sleep } from 'k6';
 // @ts-ignore
 import { SharedArray } from 'k6/data';
 
-let count = 0;
-const uuids = new SharedArray('some data name', function () {
+const uuids = new SharedArray('uuid values', function () {
   // @ts-ignore
   return JSON.parse(open('../seeds/uuids.json'));
 });
