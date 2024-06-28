@@ -28,7 +28,7 @@ export class ExampleService {
     );
   }
 
-  async deleteIndex() {
-    await this.exampleModel.collection.dropIndex('name_1')
+  deleteIndex() {
+    return this.exampleModel.collection.dropIndex('name_1');
   }
 }
